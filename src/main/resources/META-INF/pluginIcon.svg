@@ -1,0 +1,19 @@
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+    <title>Layer 1</title>
+
+    <g>
+        <title>background</title>
+        <rect fill="none" id="canvas_background" height="42" width="42" y="-1" x="-1"/>
+    </g>
+    <g>
+        <title>Layer 1</title>
+        <ellipse ry="18.75" rx="18.65625" id="svg_3" cy="20" cx="20" stroke-opacity="null" stroke-width="null"
+                 stroke="0" fill="#EDA200"/>
+        <g id="svg_1">
+            <ellipse fill="#231F20" stroke-width="0" cx="20" cy="20" id="internal" rx="9.687448" ry="9.531198"/>
+            <text xml:space="preserve" text-anchor="start" font-family="Gotham" font-size="7" id="svg_5" y="22"
+                  x="18" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="null"
+                  fill="#FFFFFF">1</text>
+        </g>
+    </g>
+</svg>
