@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>lekanich.HeadsOrTails</id>
+    <name>Heads or Tails</name>
+    <vendor email="lekan1992@gmail.com" url="https://github.com/Lekanich/HeadsOrTails"/>
+
+    <description><![CDATA[
+        Coin flipping or 'head or tails' is the way of resolving argues (internal or external) by the will of gods. </br>
+        You're throwing a coin in the air and checking on which side it landed. </br>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+    <actions>
+
+    </actions>
+</idea-plugin>
