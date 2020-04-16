@@ -28,6 +28,6 @@ intellij {
 
 patchPluginXml {
     changeNotes """
-        Coin flipper
+        Coin flipper. You can toss a coin even inside your IDE now. It's XXI century =)
     """
 }
