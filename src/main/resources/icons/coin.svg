@@ -1,0 +1,14 @@
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <title>background</title>
+        <rect fill="none" id="canvas_background" height="2.466472" width="2.466472" y="-1" x="-1"/>
+    </g>
+
+    <g>
+        <title>Layer 1</title>
+        <ellipse ry="7" rx="7" id="svg_1" cy="8" cx="8" stroke-opacity="0" stroke-width="0" stroke="0"
+                 fill="#EDA200"/>
+        <text xml:space="preserve" text-anchor="start" font-family="Gotham" font-size="8" id="svg_2" y="10.5"
+              x="5" stroke-opacity="0" stroke-width="0" stroke="0" fill="#FFFFFF">C</text>
+    </g>
+</svg>

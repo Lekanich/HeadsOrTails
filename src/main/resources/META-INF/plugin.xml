@@ -1,7 +1,9 @@
 <idea-plugin>
     <id>lekanich.HeadsOrTails</id>
     <name>Heads or Tails</name>
-    <vendor email="lekan1992@gmail.com" url="https://github.com/Lekanich/HeadsOrTails"/>
+    <vendor email="lekan1992@gmail.com" url="https://github.com/Lekanich/HeadsOrTails">
+        Aleksandr Zhelezniak
+    </vendor>
 
     <description><![CDATA[
         Coin flipping or 'head or tails' is the way of resolving argues (internal or external) by the will of gods. </br>
