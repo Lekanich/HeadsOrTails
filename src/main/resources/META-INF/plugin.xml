@@ -22,7 +22,7 @@
     </extensions>
 
     <actions>
-        <group id="advisor">
+        <group id="heads.or.tails">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
             <action id="lekanich.HeadsOrTailsAction" description="Throw a coin" text="Heads or Tails"
                     class="lekanich.HeadsOrTailsAction" icon="HeadsOrTailsIcons.COIN"/>
