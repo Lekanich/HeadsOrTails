@@ -4,10 +4,25 @@ plugins {
 }
 
 group 'lekanich'
-version '1.0.0'
+version '1.0.1'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+println "CI: ${System.getenv('CI')}"
+
+// specified the last version
+def ideaVersion = '2020.1'
+if (project.hasProperty("intellijIdeaVersion")) {
+    ideaVersion = intellijIdeaVersion ? intellijIdeaVersion : defaultIdeaVersion
+}
+println "IdeaVersion is : ${ideaVersion}"
+
+def artifactVersion = ideaVersion ? version + "-" + ideaVersion : version
+println "ArtifactVersion is : ${artifactVersion}"
+
+version artifactVersion
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 
 repositories {
     mavenCentral()
@@ -23,11 +38,26 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2020.1'
+    version ideaVersion
+    println "Building for version: ${version}"
+}
+
+buildPlugin {
+    getArchiveClassifier().set("${intellij.version}")
+}
+
+if (project.hasProperty("intellijPublishToken")) {
+    publishPlugin {
+        token intellijPublishToken
+    }
 }
 
 patchPluginXml {
     changeNotes """
         Coin flipper. You can toss a coin even inside your IDE now. It's XXI century =)
     """
+}
+
+runIde {
+//  jvmArgs '-Didea.ProcessCanceledException=disabled'
 }
