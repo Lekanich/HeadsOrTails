@@ -1,6 +1,6 @@
 package lekanich;
 
-import com.intellij.AbstractBundle;
+import com.intellij.CommonBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.PropertyKey;
 
@@ -19,6 +19,6 @@ public class HeadsOrTailsBundle {
 	private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 
 	public static String message(@PropertyKey(resourceBundle = BUNDLE_NAME) String key, Object... params) {
-		return AbstractBundle.message(BUNDLE, key, params);
+		return CommonBundle.message(BUNDLE, key, params);
 	}
 }

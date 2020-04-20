@@ -9,7 +9,7 @@ version '1.0.1'
 println "CI: ${System.getenv('CI')}"
 
 // specified the last version
-def ideaVersion = '2020.1'
+def ideaVersion = '2019.3.4'
 if (project.hasProperty("intellijIdeaVersion")) {
     ideaVersion = intellijIdeaVersion ? intellijIdeaVersion : defaultIdeaVersion
 }
@@ -53,6 +53,8 @@ if (project.hasProperty("intellijPublishToken")) {
 }
 
 patchPluginXml {
+    sinceBuild '2016.2'
+    untilBuild '2019.3.4'
     changeNotes """
         Coin flipper. You can toss a coin even inside your IDE now. It's XXI century =)
     """
