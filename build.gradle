@@ -9,7 +9,7 @@ String pluginVersion = '1.0.1'
 println "CI: ${System.getenv('CI')}"
 
 // specified the last version
-def ideaVersion = '2020.1'
+def ideaVersion = '2020.1.3'
 if (project.hasProperty("intellijIdeaVersion")) {
     ideaVersion = intellijIdeaVersion
 }
