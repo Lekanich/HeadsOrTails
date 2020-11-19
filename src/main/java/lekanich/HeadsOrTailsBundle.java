@@ -4,7 +4,9 @@ import com.intellij.AbstractBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.PropertyKey;
 
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class HeadsOrTailsBundle {
 	/**
@@ -20,5 +22,12 @@ public class HeadsOrTailsBundle {
 
 	public static String message(@PropertyKey(resourceBundle = BUNDLE_NAME) String key, Object... params) {
 		return AbstractBundle.message(BUNDLE, key, params);
+	}
+
+	public static List<String> funnyIntros() {
+		return BUNDLE.keySet().stream()
+				.filter(key -> key.startsWith("heads.or.tails.intro.m"))
+				.map(HeadsOrTailsBundle::message)
+				.collect(Collectors.toList());
 	}
 }

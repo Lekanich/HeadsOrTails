@@ -1,5 +1,6 @@
 package lekanich;
 
+import java.util.List;
 import com.intellij.notification.*;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -26,15 +27,24 @@ public class HeadsOrTailsAction extends AnAction {
 	public void actionPerformed(@NotNull AnActionEvent e) {
 		Coin result = flipCoin();
 
-		LOGGER.info(result.getKey() + " : " + result);
-		System.out.println(result.getKey() + " : " + result);
+		LOGGER.trace(result.getKey() + " : " + result);
 		String title = HeadsOrTailsBundle.message("heads.or.tails.title");
+		String subTitle = augmentIntro();
 		String message = HeadsOrTailsBundle.message(result.getKey());
 
-		notify(e, title, message);
+        notify(e, title, subTitle, message);
 	}
 
-	public static Coin flipCoin() {
+    private String augmentIntro() {
+        List<String> intros = HeadsOrTailsBundle.funnyIntros();
+        if (intros.isEmpty()) {
+            return "";
+        }
+
+        return intros.get((int) (intros.size() * Math.random()));
+    }
+
+    public static Coin flipCoin() {
 		long result = (long) (Math.random() * EDGE_PROBABILITY);
 		if (result == 0) {
 			return Coin.EDGE;
@@ -45,10 +55,11 @@ public class HeadsOrTailsAction extends AnAction {
 		}
 	}
 
-	private void notify(@NotNull AnActionEvent e, String title, String message) {
-		NotificationGroup group = new NotificationGroup(message, NotificationDisplayType.STICKY_BALLOON, true);
+	private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
+		NotificationGroup group = new NotificationGroup(message, NotificationDisplayType.BALLOON, true);
 		Notification notification = group.createNotification(
 				title,
+				subTitle,
 				message,
 				NotificationType.INFORMATION,
 				new NotificationListener.UrlOpeningListener(false)
