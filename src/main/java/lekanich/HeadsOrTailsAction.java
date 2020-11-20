@@ -1,6 +1,5 @@
 package lekanich;
 
-import java.util.List;
 import com.intellij.notification.*;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -29,20 +28,12 @@ public class HeadsOrTailsAction extends AnAction {
 
 		LOGGER.trace(result.getKey() + " : " + result);
 		String title = HeadsOrTailsBundle.message("heads.or.tails.title");
-		String subTitle = augmentIntro();
+		int index = (int) (HeadsOrTailsBundle.getFunnyIntrosSize() * Math.random());
+		String subTitle = HeadsOrTailsBundle.getFunnyIntrosByIndex(index);
 		String message = HeadsOrTailsBundle.message(result.getKey());
 
         notify(e, title, subTitle, message);
 	}
-
-    private String augmentIntro() {
-        List<String> intros = HeadsOrTailsBundle.funnyIntros();
-        if (intros.isEmpty()) {
-            return "";
-        }
-
-        return intros.get((int) (intros.size() * Math.random()));
-    }
 
     public static Coin flipCoin() {
 		long result = (long) (Math.random() * EDGE_PROBABILITY);
