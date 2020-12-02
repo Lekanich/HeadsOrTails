@@ -1,16 +1,16 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '0.6.4'
+    id 'org.jetbrains.intellij' version '0.6.5'
 }
 
 group 'lekanich'
 // the last digits it's the version of plugin in scope of IDEA version
-String pluginVersion = '2020.2.03'
+String pluginVersion = '2020.3.01'
 
 println "CI: ${System.getenv('CI')}"
 
 // specified the last version
-def ideaVersion = '2020.2'
+def ideaVersion = '2020.3'
 if (project.hasProperty("intellijIdeaVersion")) {
     ideaVersion = project.property("intellijIdeaVersion")
 }
@@ -50,12 +50,13 @@ if (project.hasProperty("intellijPublishToken")) {
 }
 
 patchPluginXml {
-//    version pluginVersion
     sinceBuild '163'
-    untilBuild '202.*'
+    untilBuild '203.*'
     changeNotes """
         Coin flipper. You can toss a coin even inside your IDE now. It's XXI century =) <br/>
         <br/>
+        [2020.3.01]<br/>
+            * internal update for new version of IDEA
         [2020.2.02]<br/>
             * updated plugin icon<br/
             * change internal resolve of messages <br/
@@ -69,7 +70,7 @@ runIde {
 //  jvmArgs '-Didea.ProcessCanceledException=disabled'
 }
 
-//https://data.services.jetbrains.com/products?fields=code,name,releases.downloads,releases.version,releases.build,releases.type&code=DG,PS,DL,MPS,MPSIIP,RDCPPP,WS,AC,IIC,IIE,GO,CL,PCD,PCC,RD,PCE,IIU,RM,PCP
+//https://data.services.jetbrains.com/products?fields=code,name,releases.downloads,releases.version,releases.build,releases.type&code=IIC,IIU
 runPluginVerifier {
-    ideVersions = "2016.3.8,2017.3.7,2018.3.6,2019.3.5,2020.1.4, 2020.2.3"
+    ideVersions = "2016.3.8,2017.3.7,2018.3.6,2019.3.5,2020.1.4,2020.2.3,2020.3"
 }
