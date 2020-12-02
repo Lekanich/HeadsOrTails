@@ -1,6 +1,11 @@
 package lekanich;
 
-import com.intellij.notification.*;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationDisplayType;
+import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationListener;
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.diagnostic.Logger;
@@ -9,58 +14,60 @@ import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 public class HeadsOrTailsAction extends AnAction {
-	public static final long EDGE_PROBABILITY = 1_000_000_000;
-	public static final Logger LOGGER = Logger.getInstance(HeadsOrTailsAction.class);
+    private static final double EDGE_CONST = 1.0E-9;
+    private static final double HALF_CONST = 0.5 + EDGE_CONST / 10;
+    public static final Logger LOGGER = Logger.getInstance(HeadsOrTailsAction.class);
 
-	@RequiredArgsConstructor
-	public enum Coin {
-		HEAD("heads.or.tails.head"),
-		TAIL("heads.or.tails.tail"),
-		EDGE("heads.or.tails.edge");
+    @RequiredArgsConstructor
+    public enum Coin {
+        HEAD("heads.or.tails.head"),
+        TAIL("heads.or.tails.tail"),
+        EDGE("heads.or.tails.edge");
 
-		@Getter
-		private final String key;
-	}
+        @Getter
+        private final String key;
+    }
 
-	@Override
-	public void actionPerformed(@NotNull AnActionEvent e) {
-		Coin result = flipCoin();
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent e) {
+        Coin result = flipCoin();
 
-		LOGGER.trace(result.getKey() + " : " + result);
-		String title = HeadsOrTailsBundle.message("heads.or.tails.title");
-		int index = (int) (HeadsOrTailsBundle.getFunnyIntrosSize() * Math.random());
-		String subTitle = HeadsOrTailsBundle.getFunnyIntrosByIndex(index);
-		String message = HeadsOrTailsBundle.message(result.getKey());
+        LOGGER.trace(result.getKey() + " : " + result);
+        String title = HeadsOrTailsBundle.message("heads.or.tails.title");
+        int index = (int) (HeadsOrTailsBundle.getFunnyIntrosSize() * Math.random());
+        String subTitle = HeadsOrTailsBundle.getFunnyIntrosByIndex(index);
+        String message = HeadsOrTailsBundle.message(result.getKey());
 
         notify(e, title, subTitle, message);
-	}
+    }
 
     public static Coin flipCoin() {
-		long result = (long) (Math.random() * EDGE_PROBABILITY);
-		if (result == 0) {
-			return Coin.EDGE;
-		} else if (result < EDGE_PROBABILITY / 2) {
-			return Coin.HEAD;
-		} else {
-			return Coin.TAIL;
-		}
-	}
+        double result = Math.random();
 
-	private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
-		NotificationGroup group = new NotificationGroup(message, NotificationDisplayType.BALLOON, true);
-		Notification notification = group.createNotification(
-				title,
-				subTitle,
-				message,
-				NotificationType.INFORMATION,
-				new NotificationListener.UrlOpeningListener(false)
-		);
+        if (result <= EDGE_CONST) {
+            return Coin.EDGE;
+        } else if (result < HALF_CONST) {
+            return Coin.HEAD;
+        } else {
+            return Coin.TAIL;
+        }
+    }
 
-		Notifications.Bus.notify(notification, e.getProject());
-	}
+    private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
+        NotificationGroup group = new NotificationGroup(message, NotificationDisplayType.BALLOON, true);
+        Notification notification = group.createNotification(
+                title,
+                subTitle,
+                message,
+                NotificationType.INFORMATION,
+                new NotificationListener.UrlOpeningListener(false)
+        );
 
-	@Override
-	public boolean isDumbAware() {
-		return true;
-	}
+        Notifications.Bus.notify(notification, e.getProject());
+    }
+
+    @Override
+    public boolean isDumbAware() {
+        return true;
+    }
 }
