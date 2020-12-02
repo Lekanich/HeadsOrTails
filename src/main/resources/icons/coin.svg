@@ -1,25 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
 	<defs>
-		<linearGradient id="coinapluginicon-a" x1="50%" x2="50%" y1="0%" y2="65.836%">
-			<stop offset="0%" stop-color="#F7CF01"/>
-			<stop offset="100%" stop-color="#EDA200"/>
-		</linearGradient>
-		<linearGradient id="coinapluginicon-b" x1="50%" x2="50%" y1="23.084%" y2="100%">
-			<stop offset="0%" stop-color="#F7BF10"/>
-			<stop offset="100%" stop-color="#222222"/>
-		</linearGradient>
-		<linearGradient id="coinapluginicon-c" x1="50%" x2="50%" y1="23.084%" y2="100%">
-			<stop offset="0%" stop-color="#BF930D"/>
-			<stop offset="100%" stop-color="#D6D3BA"/>
+		<linearGradient id="coinapluginicon-a" x1="36.282%" x2="78.894%" y1="64.569%" y2="14.939%">
+			<stop offset="0%" stop-color="#EDA200"/>
+			<stop offset="100%" stop-color="#DEDAB6"/>
 		</linearGradient>
 	</defs>
 	<g fill="none" fill-rule="evenodd">
 		<rect width="16" height="16"/>
-		<circle cx="8" cy="8" r="7" fill="url(#coinapluginicon-a)" fill-rule="nonzero" stroke="#000" stroke-opacity=".85" stroke-width=".3"/>
-		<circle cx="8" cy="8" r="5" fill="url(#coinapluginicon-b)" fill-rule="nonzero" stroke="#000" stroke-opacity=".85" stroke-width=".2"/>
-		<circle cx="8" cy="8" r="4" fill="url(#coinapluginicon-c)" fill-rule="nonzero" stroke="#000" stroke-opacity=".85" stroke-width=".2"/>
-		<text fill="#242424" font-family="Gotham" font-size="5" font-style="italic">
-			<tspan x="4" y="9.9">OZ</tspan>
+		<circle cx="8" cy="8" r="7" fill="url(#coinapluginicon-a)" fill-rule="nonzero" stroke="#000" stroke-width=".2"/>
+		<circle cx="8" cy="8" r="5" fill="#000" fill-opacity=".05" fill-rule="nonzero" stroke="#000" stroke-opacity=".85" stroke-width=".5"/>
+		<text fill="#101010" stroke="#DDDDDD" stroke-width="0.2" font-family="Gotham" font-size="7" font-weight="bold">
+			<tspan x="5.1" y="10.5">O</tspan>
+			<tspan x="6" y="10">/</tspan>
 		</text>
 	</g>
 </svg>
