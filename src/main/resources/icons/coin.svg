@@ -1,15 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-	<defs>
-		<linearGradient id="coinapluginicon-a" x1="36.282%" x2="78.894%" y1="64.569%" y2="14.939%">
-			<stop offset="0%" stop-color="#EDA200"/>
-			<stop offset="100%" stop-color="#DEDAB6"/>
-		</linearGradient>
-	</defs>
 	<g fill="none" fill-rule="evenodd">
 		<rect width="16" height="16"/>
-		<circle cx="8" cy="8" r="7" fill="url(#coinapluginicon-a)" fill-rule="nonzero" stroke="#000" stroke-width=".2"/>
+		<circle cx="8" cy="8" r="7" fill="#DEA932" fill-rule="nonzero" stroke="#000" stroke-width=".2"/>
 		<circle cx="8" cy="8" r="5" fill="#000" fill-opacity=".05" fill-rule="nonzero" stroke="#000" stroke-opacity=".85" stroke-width=".5"/>
-		<text fill="#101010" stroke="#DDDDDD" stroke-width="0.2" font-family="Gotham" font-size="7" font-weight="bold">
+		<text fill="#303030" stroke="#DDDDDD" stroke-width="0.2" font-family="Gotham" font-size="7" font-weight="bold">
 			<tspan x="5.1" y="10.5">O</tspan>
 			<tspan x="6" y="10">/</tspan>
 		</text>
