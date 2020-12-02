@@ -51,7 +51,7 @@ if (project.hasProperty("intellijPublishToken")) {
 
 patchPluginXml {
     sinceBuild '163'
-    untilBuild '203.*'
+//    untilBuild '203.*'
     changeNotes """
         Coin flipper. You can toss a coin even inside your IDE now. It's XXI century =) <br/>
         <br/>
