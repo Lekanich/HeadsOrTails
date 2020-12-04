@@ -16,6 +16,8 @@
 
     <depends>com.intellij.modules.platform</depends>
 
+    <resource-bundle>messages.HeadsOrTailsBundle</resource-bundle>
+
     <extensions defaultExtensionNs="com.intellij">
     </extensions>
 

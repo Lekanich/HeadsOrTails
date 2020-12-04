@@ -1,5 +1,6 @@
 package lekanich;
 
+import java.util.Optional;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
@@ -55,7 +56,9 @@ public class HeadsOrTailsAction extends AnAction {
     }
 
     private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
-        NotificationGroup group = new NotificationGroup(message, NotificationDisplayType.BALLOON, true, null, HeadsOrTailsIcons.COIN);
+        NotificationGroup group = Optional.ofNullable(NotificationGroup.findRegisteredGroup(title))
+                .orElseGet(() -> new NotificationGroup(title, NotificationDisplayType.BALLOON, true, null, HeadsOrTailsIcons.COIN));
+
         Notification notification = group.createNotification(
                 title,
                 subTitle,
