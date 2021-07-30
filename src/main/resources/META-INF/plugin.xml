@@ -3,17 +3,6 @@
     <name>Heads or Tails</name>
     <vendor email="lekan1992@gmail.com">Aleksandr Zhelezniak</vendor>
 
-    <description><![CDATA[
-        Coin flipping or 'head or tails' is the way of resolving argues (internal or external) by the will of gods. </br>
-        You're throwing a coin in the air and checking on which side it landed. </br>
-        <hr>
-        Usage instruction:<br/>
-        Go to the Menu bar and choose 'Tools' on the menu.<br/>
-        On the top, you should see the 'Head or Tails' option. <br/>
-        Choose a side 'head' or 'tail' and press the option. <br/>
-        You can find the side of the coin in the event log in the left bottom.<br/>
-    ]]></description>
-
     <depends>com.intellij.modules.platform</depends>
 
     <resource-bundle>messages.HeadsOrTailsBundle</resource-bundle>
