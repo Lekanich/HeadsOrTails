@@ -1,8 +1,6 @@
 package lekanich;
 
-import java.util.Optional;
 import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;
@@ -10,68 +8,62 @@ import com.intellij.notification.Notifications.Bus;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.diagnostic.Logger;
-import icons.HeadsOrTailsIcons;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 public class HeadsOrTailsAction extends AnAction {
-    private static final Logger LOGGER = Logger.getInstance(HeadsOrTailsAction.class);
-    private static final double EDGE_CONST = 1.0E-9;
-    private static final double HALF_CONST = 0.5 + EDGE_CONST / 10;
+	private static final Logger LOGGER = Logger.getInstance(HeadsOrTailsAction.class);
+	private static final double EDGE_CONST = 1.0E-9;
+	private static final double HALF_CONST = 0.5 + EDGE_CONST / 10;
 
-    @RequiredArgsConstructor
-    public enum Coin {
-        HEAD("heads.or.tails.head"),
-        TAIL("heads.or.tails.tail"),
-        EDGE("heads.or.tails.edge");
+	@RequiredArgsConstructor
+	public enum Coin {
+		HEAD("heads.or.tails.head"),
+		TAIL("heads.or.tails.tail"),
+		EDGE("heads.or.tails.edge");
 
-        @Getter
-        private final String key;
-    }
+		@Getter
+		private final String key;
+	}
 
-    @Override
-    public void actionPerformed(@NotNull AnActionEvent e) {
-        Coin result = flipCoin();
+	@Override
+	public void actionPerformed(@NotNull AnActionEvent e) {
+		Coin result = flipCoin();
 
-        LOGGER.trace(result.getKey() + " : " + result);
-        String title = HeadsOrTailsBundle.message("heads.or.tails.title");
-        int index = (int) (HeadsOrTailsBundle.getFunnyIntrosSize() * Math.random());
-        String subTitle = HeadsOrTailsBundle.getFunnyIntrosByIndex(index);
-        String message = HeadsOrTailsBundle.message(result.getKey());
+		LOGGER.trace(result.getKey() + " : " + result);
+		String title = HeadsOrTailsBundle.message("heads.or.tails.title");
+		int index = (int) (HeadsOrTailsBundle.getFunnyIntrosSize() * Math.random());
+		String subTitle = HeadsOrTailsBundle.getFunnyIntrosByIndex(index);
+		String message = HeadsOrTailsBundle.message(result.getKey());
 
-        notify(e, title, subTitle, message);
-    }
+		notify(e, title, subTitle, message);
+	}
 
-    public static Coin flipCoin() {
-        double result = Math.random();
+	public static Coin flipCoin() {
+		double result = Math.random();
 
-        if (result <= EDGE_CONST) {
-            return Coin.EDGE;
-        } else if (result < HALF_CONST) {
-            return Coin.HEAD;
-        } else {
-            return Coin.TAIL;
-        }
-    }
+		if (result <= EDGE_CONST) {
+			return Coin.EDGE;
+		} else if (result < HALF_CONST) {
+			return Coin.HEAD;
+		} else {
+			return Coin.TAIL;
+		}
+	}
 
     private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
-        NotificationGroup group = Optional.ofNullable(NotificationGroup.findRegisteredGroup(title))
-                .orElseGet(() -> new NotificationGroup(title, NotificationDisplayType.BALLOON, true, null, HeadsOrTailsIcons.COIN));
+        NotificationGroup group = NotificationGroup.findRegisteredGroup(HeadsOrTailsBundle.message("heads.or.tails.title"));
+		Notification notification = group.createNotification(message, NotificationType.INFORMATION);
+		notification.setTitle(title);
+		notification.setSubtitle(subTitle);
+		notification.setListener(new NotificationListener.UrlOpeningListener(false));
 
-        Notification notification = group.createNotification(
-                title,
-                subTitle,
-                message,
-                NotificationType.INFORMATION,
-                new NotificationListener.UrlOpeningListener(false)
-        );
+		Bus.notify(notification, e.getProject());
+	}
 
-        Bus.notify(notification, e.getProject());
-    }
-
-    @Override
-    public boolean isDumbAware() {
-        return true;
-    }
+	@Override
+	public boolean isDumbAware() {
+		return true;
+	}
 }
