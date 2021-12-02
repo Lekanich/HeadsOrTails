@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [2021.3.1]
+### Updated
+- An internal update for new version of IDEA 2021.3
+
 ## [2021.2.1]
 ### Changed
 - An internal update for new version of IDEA 2021.2
