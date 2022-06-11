@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>lekanich.HeadsOrTails</id>
     <name>Heads or Tails</name>
-    <vendor email="lekan1992@gmail.com">Aleksandr Zhelezniak</vendor>
+    <vendor email="lekan1992@gmail.com">Oleksandr Zhelezniak</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
