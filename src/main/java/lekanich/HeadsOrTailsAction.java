@@ -1,13 +1,14 @@
 package lekanich;
 
-import com.intellij.notification.Notification;
+import java.util.Optional;
+import com.intellij.notification.NotificationAction;
 import com.intellij.notification.NotificationGroup;
-import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications.Bus;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.diagnostic.Logger;
+import icons.HeadsOrTailsIcons;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -52,14 +53,15 @@ public class HeadsOrTailsAction extends AnAction {
 		}
 	}
 
-    private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
-        NotificationGroup group = NotificationGroup.findRegisteredGroup(HeadsOrTailsBundle.message("heads.or.tails.title"));
-		Notification notification = group.createNotification(message, NotificationType.INFORMATION);
-		notification.setTitle(title);
-		notification.setSubtitle(subTitle);
-		notification.setListener(new NotificationListener.UrlOpeningListener(false));
-
-		Bus.notify(notification, e.getProject());
+	private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
+		Optional.ofNullable(NotificationGroup.findRegisteredGroup(HeadsOrTailsBundle.message("heads.or.tails.title")))
+				.map(group -> group.createNotification(message, NotificationType.INFORMATION)
+						.setTitle(title)
+						.setSubtitle(subTitle)
+						.setIcon(HeadsOrTailsIcons.COIN)
+						.addAction(NotificationAction.createSimpleExpiring("", () -> {
+						})))
+				.ifPresent(notification -> Bus.notify(notification, e.getProject()));
 	}
 
 	@Override

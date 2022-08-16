@@ -8,7 +8,7 @@
     <resource-bundle>messages.HeadsOrTailsBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <notificationGroup id="Heads or Tails" displayType="BALLOON" key="heads.or.tails.title" icon="HeadsOrTailsIcons.COIN"/>
+        <notificationGroup id="Heads or Tails" displayType="BALLOON" key="heads.or.tails.title"/>
     </extensions>
 
     <actions>
