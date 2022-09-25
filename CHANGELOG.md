@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [2022.2.2]
+### Updated
+- An internal update for new version of IDEA 2022.2.2
+
 ## [2022.2.1]
 ### Updated
 - An internal update for new version of IDEA 2022.2
