@@ -23,6 +23,7 @@ hs_err_pid*
 
 .idea/
 .gradle/
+build/
 
 possible.versions.txt
 token.txt
