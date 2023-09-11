@@ -2,9 +2,10 @@
 
 # Head or Tails Plugin Changelog
 
-## [Unreleased]
+## [2023.2.1]
 #### Updated
 - Update color of plugin icon
+- An internal update for new version of IDEA
 
 ## [2022.2.2],[2022.2.1],[2021.3.1]
 #### Updated
