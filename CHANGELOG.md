@@ -2,6 +2,9 @@
 
 # Head or Tails Plugin Changelog
 
+## 2024.1.1
+- Update dependencies
+
 ## 2023.2.1
 - Update color of plugin icon
 - An internal update for new version of IDEA
