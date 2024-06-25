@@ -119,7 +119,7 @@ tasks {
         untilBuild = ""
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
-        pluginDescription = File(projectDir, "README.MD").readText().lines().run {
+        pluginDescription = File(projectDir, "README.md").readText().lines().run {
             val start = "<!-- Plugin description -->"
             val end = "<!-- Plugin description end -->"
 
