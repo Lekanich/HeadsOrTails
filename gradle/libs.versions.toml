@@ -2,7 +2,7 @@
 #libraries
 lombok = "1.18.36"
 junit = "4.13.2"
-hamcrest = "2.2"
+hamcrest = "3.0"
 
 #plugins
 kotlin = "2.1.0"
