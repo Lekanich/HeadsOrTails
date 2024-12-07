@@ -29,7 +29,7 @@ public class HeadsOrTailsAction extends AnAction {
 	}
 
 	@Override
-	public void actionPerformed(@NotNull AnActionEvent e) {
+	public void actionPerformed(@NotNull final AnActionEvent e) {
 		Coin result = flipCoin();
 
 		LOGGER.trace(result.getKey() + " : " + result);
@@ -53,7 +53,10 @@ public class HeadsOrTailsAction extends AnAction {
 		}
 	}
 
-	private void notify(@NotNull AnActionEvent e, String title, String subTitle, String message) {
+	private void notify(@NotNull final AnActionEvent e,
+						final String title,
+						final String subTitle,
+						final String message) {
 		Optional.ofNullable(NotificationGroup.findRegisteredGroup(HeadsOrTailsBundle.message("heads.or.tails.title")))
 				.map(group -> group.createNotification(message, NotificationType.INFORMATION)
 						.setTitle(title)
