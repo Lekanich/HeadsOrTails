@@ -20,8 +20,8 @@ plugins {
     checkstyle
 }
 
-group = properties("pluginGroup")
-version = properties("pluginVersion")
+group = properties("pluginGroup").get()
+version = properties("pluginVersion").get()
 
 println("ArtifactVersion is : ${properties("pluginVersion").get()}")
 
@@ -59,7 +59,6 @@ dependencies {
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(properties("platformPlugins").map { it.split(',') })
 
-        instrumentationTools()
         pluginVerifier()
         zipSigner()
         testFramework(TestFrameworkType.Platform)
@@ -69,8 +68,8 @@ dependencies {
 // Configure IntelliJ Platform Gradle Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-extension.html
 intellijPlatform {
     pluginConfiguration {
-        name = properties("pluginName")
-        version = properties("pluginVersion")
+        name = properties("pluginName").get()
+        version = properties("pluginVersion").get()
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         description =
@@ -102,7 +101,7 @@ intellijPlatform {
             // like to put a major version here, instead of the specific
             sinceBuild = properties("pluginSinceBuild")
             // remove until build
-            untilBuild = properties("pluginUntilBuild")
+            untilBuild = provider { null }
         }
     }
 
@@ -132,7 +131,7 @@ intellijPlatform {
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-    version = properties("pluginVersion")
+    version = properties("pluginVersion").get()
     header = provider(version::get)
     itemPrefix = "-"
     keepUnreleasedSection = false
