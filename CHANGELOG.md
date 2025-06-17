@@ -5,6 +5,7 @@
 ## [Unreleased]
 
 - Update dependencies
+- Add Error Report Submitter
 
 ## 2024.1.1
 

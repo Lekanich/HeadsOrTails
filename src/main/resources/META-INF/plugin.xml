@@ -9,6 +9,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <notificationGroup id="Heads or Tails" displayType="BALLOON" key="heads.or.tails.title"/>
+
+        <errorHandler implementation="com.intellij.diagnostic.JetBrainsMarketplaceErrorReportSubmitter"/>
     </extensions>
 
     <actions>
