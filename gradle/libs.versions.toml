@@ -9,7 +9,7 @@ kotlin = "2.2.0"
 changelog = "2.2.1"
 intelliJPlatform = "2.6.0"
 detekt = "1.23.8"
-ktlint = "12.3.0"
+ktlint = "13.0.0"
 
 [libraries]
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
