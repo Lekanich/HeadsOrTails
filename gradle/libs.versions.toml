@@ -6,7 +6,7 @@ hamcrest = "3.0"
 
 #plugins
 kotlin = "2.2.21"
-changelog = "2.4.0"
+changelog = "2.5.0"
 intelliJPlatform = "2.10.3"
 detekt = "1.23.8"
 ktlint = "13.1.0"
