@@ -183,10 +183,6 @@ checkstyle {
 }
 
 tasks {
-    wrapper {
-        gradleVersion = properties("gradleVersion").get()
-    }
-
     withType<Detekt> {
         jvmTarget = "21"
         reports {
