@@ -5,9 +5,9 @@ junit = "4.13.2"
 hamcrest = "3.0"
 
 #plugins
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 changelog = "2.5.0"
-intelliJPlatform = "2.16.0"
+intelliJPlatform = "2.17.0"
 detekt = "1.23.8"
 ktlint = "14.2.0"
 
